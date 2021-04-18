@@ -1,0 +1,32 @@
+#! /usr/bin/env node
+// const cv = require('../lib/chicago-vax');
+const defaults = {
+  d: 0,
+  f: false
+}
+const aliases = {
+  h: 'help'
+}
+const args = require('minimist')(process.argv.slice(2), { default: defaults, alias: aliases });
+
+const description =
+`Fetch COVID vax records from the Chicago City Data Portal`;
+const help =
+`\n  Usage: fetch_records [options]
+Options:
+  -d NUM  Number of days to retrieve (defaults to all available)
+  -f      Write records to flat file only (defaults to flat file and MongoDB)
+  -h      Print this help message`;
+
+if (process.env.DEBUG) console.log(args);
+
+if (args.h || args._.includes('help')) {
+  console.log(description, help);
+}
+
+// cv.fetchVaxRecords(args.d, args.f);
+
+// function fetchVaxRecords(days, filesOnly) {
+//   if (days === 0) {}
+//   if (filesOnly) {}
+// }
