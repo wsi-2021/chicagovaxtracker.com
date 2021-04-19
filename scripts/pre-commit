@@ -26,8 +26,9 @@ git stash push -q --keep-index --include-untracked --message $STASH_NAME
 # Alternatively
 FAILED_TESTS=0
 trap 'FAILED_TESTS=$((FAILED_TESTS+1))' ERR
-npm run test
 npm run lint:node
+npm run test
+
 
 # Restore the repository to its pre-test state.
 # Look through the list of stashes for the matching stash:
