@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-// const cv = require('../lib/chicago-vax');
+const cv = require('../lib/chicago-vax');
 const version = `1.0.0`;
 
 const description =
@@ -32,6 +32,11 @@ if (args.v || args._.includes('version')) {
   console.log(`${description}, v${version}.`);
   return;
 }
+
+cv.fetchVaxRecords().catch(e => {
+  console.error(e);
+  process.exit(1)
+});
 
 
 
