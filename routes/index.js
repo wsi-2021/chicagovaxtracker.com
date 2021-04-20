@@ -1,3 +1,4 @@
+'use strict';
 var express = require('express');
 var {Index} = require('../models/index');
 var router = express.Router();
