@@ -17,6 +17,6 @@ describe('buildLogMessage', function() {
     const now = new Date().toISOString();
     const type = "ERROR";
     const message = "Actually not an error. Just testing!";
-    assert.equal(`${now} - ${type}: ${message}`, cv.buildLogMessage(now, message, type), 'log message not as expected');
+    assert.equal(`${now} - ${type}: ${message}\n`, cv.buildLogMessage(now, message, type), 'log message not as expected');
   });
 });
