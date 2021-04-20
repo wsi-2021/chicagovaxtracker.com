@@ -19,18 +19,12 @@ STASH_NAME="pre-commit-$(date +%s)"
 # already staged with `git add`) and include any untracked files in the stash.
 git stash push -q --keep-index --include-untracked --message $STASH_NAME
 
-# Run your test suite (`npm test` in this example)...
-# npm test
-# ...and then capture its exit code.
-# RESULT=$?
-
-# Alternatively
+# Track and increment the number of failed tests
 FAILED_TESTS=0
 trap 'FAILED_TESTS=$((FAILED_TESTS+1))' ERR
-# List all tests to be run here
+# List all test commands to be run
 npm run lint:node
 npm run test
-
 
 # Restore the repository to its pre-test state.
 # Look through the list of stashes for the matching stash:
@@ -45,11 +39,8 @@ if [[ $STASHES == $STASH_NAME ]]; then
   git reset --hard -q && git stash apply --index -q && git stash drop -q
 fi
 
-# Finally, if a non-zero (non-successful) status returns from the test suite,
-# exit this pre-commit hook with status 1: this halts the commit in its tracks.
-# [ $RESULT -ne 0 ] && exit 1
-# Otherwise, exit with an okay status (0) and proceed with the commit.
-# exit 0
+# If the number of failed tests isn't zero, exit with status 1 and halt the
+# commit.
 if ((FAILED_TESTS == 0)); then
   exit 0 # Proceed with the commit
 else

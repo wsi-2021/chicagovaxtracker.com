@@ -6,7 +6,7 @@ git stash push -q --keep-index --include-untracked --message $STASH_NAME
 
 FAILED_TESTS=0
 trap 'FAILED_TESTS=$((FAILED_TESTS+1))' ERR
-# List all tests to be run here
+# List all test commands to be run
 npm run lint:node
 npm run test
 
