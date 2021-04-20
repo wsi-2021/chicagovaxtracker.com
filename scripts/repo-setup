@@ -1,0 +1,9 @@
+#! /usr/bin/env sh
+# Hold onto the root of the repository
+REPO_ROOT=$(git rev-parse --show-toplevel)
+
+# Link the pre-commit hook relative to the `.git/hooks` directory
+ln -s ../../scripts/hooks/pre-commit $REPO_ROOT/.git/hooks/pre-commit
+
+# Install all dependencies, including development dependencies
+npm install --save-dev
