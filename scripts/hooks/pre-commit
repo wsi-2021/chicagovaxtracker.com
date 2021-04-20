@@ -18,5 +18,6 @@ fi
 if ((FAILED_TESTS == 0)); then
   exit 0 # Proceed with the commit
 else
+  echo "Unable to make commit; fix code and stage fixes with \`git add\`"
   exit 1 # Halt the commit
 fi
