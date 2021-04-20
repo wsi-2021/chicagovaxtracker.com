@@ -51,6 +51,6 @@
     "no-confusing-arrow": "error",
     "prefer-rest-params": "error",
     "prefer-template": "warn",
-    "template-curly-spacing": ["warn", "always"]
+    "template-curly-spacing": ["warn", "never"]
   }
 }
