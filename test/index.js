@@ -1,5 +1,4 @@
 const assert = require('assert/strict');
-const mocha = require('mocha');
 
 const {Index} = require('../models/index');
 

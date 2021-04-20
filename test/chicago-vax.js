@@ -1,5 +1,4 @@
 const assert = require('assert/strict');
-const mocha = require('mocha');
 const cv = require('../lib/chicago-vax');
 
 describe('dateFromDaysAgo', function() {
