@@ -18,7 +18,7 @@
     "no-template-curly-in-string": "error",
     "block-scoped-var": "warn",
     "brace-style": "warn",
-    "curly": ["warn", "all"],
+    "curly": ["warn", "multi-line"],
     "dot-location": ["warn", "property"],
     "dot-notation": "warn",
     "eqeqeq": ["warn", "always"],
