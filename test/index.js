@@ -3,11 +3,8 @@ const assert = require('assert/strict');
 
 const {Index} = require('../models/index');
 
-beforeEach(function() {
-  return my_index = new Index('A Title', 'A Piece of Content');
-});
-
 describe('Index', function() {
+  const my_index = new Index('A Title', 'A Piece of Content');
   describe('#new', function() {
     it('should preserve its constructor values', function() {
       assert.equal('A Title', my_index.title);
