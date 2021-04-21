@@ -13,7 +13,7 @@ Options:
   -v      Print the version number`;
 
 const defaults = {
-  d: 0,
+  d: 'all',
   f: false
 }
 const aliases = {
