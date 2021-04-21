@@ -33,10 +33,11 @@ if (args.v || args._.includes('version')) {
   return;
 }
 
-cv.fetchVaxRecords().catch(e => {
-  console.error(e);
-  process.exit(1)
-});
+cv.fetchVaxRecords(args.d, args.f)
+  .catch(e => {
+    console.error(e);
+    process.exit(1);
+  });
 
 
 
