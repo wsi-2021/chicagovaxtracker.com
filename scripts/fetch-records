@@ -9,12 +9,14 @@ const help =
 Options:
   -d NUM  Number of days to retrieve (defaults to all available)
   -f      Write records to flat file only (defaults to flat file and MongoDB)
+  -l NUM  Number of records to retrieve (defaults to 1000)
   -h      Print this help message
   -v      Print the version number`;
 
 const defaults = {
   d: 'all',
-  f: false
+  f: false,
+  l: 1000
 }
 const aliases = {
   h: 'help',
@@ -33,7 +35,7 @@ if (args.v || args._.includes('version')) {
   return;
 }
 
-cv.fetchVaxRecords(args.d, args.f)
+cv.fetchVaxRecords(args.d, args.f, args.l)
   .catch(e => {
     console.error(e);
     process.exit(1);
