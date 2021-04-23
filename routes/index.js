@@ -1,7 +1,7 @@
 'use strict';
-var express = require('express');
-var {Index} = require('../models/index');
-var router = express.Router();
+const express = require('express');
+const {Index} = require('../models/index');
+const router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
