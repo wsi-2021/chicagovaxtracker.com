@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "NODE_ENV=test mocha",
-    "lint:node": "npx eslint -c conf.eslint.node.json --ignore-pattern public ./"
+    "lint:node": "npx eslint -c conf.eslint.node.json --ignore-pattern public ./",
+    "mongo:start": "mongod --config db/mongod.dev.conf"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

@@ -62,3 +62,7 @@ typings/
 
 # json files
 var/data/*.json
+
+# mongodb files
+var/mongodb/*
+!var/mongodb/.keep
