@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
   article
-    h2= content
+    h2= title
+    p Population: #{items[0].population}
+    each i in items
+      p #{i.zip_code} #{i.date.split('T')[0]}
