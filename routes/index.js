@@ -19,7 +19,7 @@ router.get('/:zip([0-9]{5}|Unknown)/:days([0-9]+)?', async function(req, res) {
   const r = new Record(zip, days);
   const items = await r.items();
   console.log(`${items.length} items`);
-  res.render('index', {title: zip, items: items});
+  res.render('zip', {title: zip, items: items});
 });
 
 module.exports = router;
