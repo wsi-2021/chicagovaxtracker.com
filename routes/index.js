@@ -1,12 +1,25 @@
 'use strict';
 const express = require('express');
-const {Index} = require('../models/index');
+const {Record} = require('../models/record');
 const router = express.Router();
 
 /* GET home page. */
-router.get('/', function(req, res) {
-  let my_index = new Index('Hello from Model-World', 'Here is nice, fresh content');
-  res.render('index', my_index);
+router.get('/', async function(req, res) {
+  // let my_index = new Index('Hello from Model-World', 'Here is nice, fresh content');
+  const r = new Record();
+  const items = await r.items();
+  console.log(`${items.length} items`);
+  res.render('index', {title: 'All ZIP Codes', items: items});
+});
+
+router.get('/:zip([0-9]{5}|Unknown)/:days([0-9]+)?', async function(req, res) {
+  // let my_index = new Index('Hello from Model-World', 'Here is nice, fresh content');
+  const zip = req.params.zip;
+  const days = Number.parseInt(req.params.days) ?? 10;
+  const r = new Record(zip, days);
+  const items = await r.items();
+  console.log(`${items.length} items`);
+  res.render('index', {title: zip, items: items});
 });
 
 module.exports = router;
