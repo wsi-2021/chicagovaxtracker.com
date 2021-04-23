@@ -1,3 +1,5 @@
+'use strict';
+
 const mongo = require('mongodb').MongoClient;
 
 async function connect(url = process.env.MONGO_URL) {
@@ -11,4 +13,4 @@ async function connect(url = process.env.MONGO_URL) {
 
 module.exports = {
   connect
-}
+};
