@@ -8,7 +8,7 @@ router.get('/', async function(req, res) {
   // let my_index = new Index('Hello from Model-World', 'Here is nice, fresh content');
   const r = new Record();
   const items = await r.items();
-  console.log(`${items.length} items`);
+  // console.log(`${items.length} items`);
   res.json(items);
 });
 
@@ -18,7 +18,7 @@ router.get('/:zip([0-9]{5}|Unknown)/:days([0-9]+|all)?', async function(req, res
   const days = req.params.days ? req.params.days : 10;
   const r = new Record(zip, days);
   const items = await r.items();
-  console.log(`${items.length} items`);
+  // console.log(`${items.length} items`);
   res.json(items);
 });
 
