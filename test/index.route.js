@@ -1,3 +1,5 @@
+'use strict';
+/* global after, before, describe, it */
 const assert = require('assert');
 const cheerio = require('cheerio');
 // See https://www.npmjs.com/package/supertest

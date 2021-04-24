@@ -1,3 +1,5 @@
+'use strict';
+/* global after, before, describe, it */
 const assert = require('assert');
 // See https://www.npmjs.com/package/supertest
 // Used for making requests on the ExpressJS app

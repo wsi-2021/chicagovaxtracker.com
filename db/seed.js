@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require('fs/promises');
 const mdb = require('../db/connect');
 const path = require('path');
@@ -20,7 +22,6 @@ async function seedDatabase() {
       await collection.updateOne({_id: d._id}, { '$set': d}, {upsert: true});
     }
     await collection.createIndex('zip_code');
-    const count = await collection.countDocuments({});
     // console.log('Record count:', count);
   } catch(error) {
     console.error(error.message);
