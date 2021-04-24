@@ -3,16 +3,19 @@
 const mdb = require('../db/connect');
 
 class Record {
-  constructor(zip = 'all', days = 1, limit = 60) {
+  constructor(zip = 'all', days = 1) {
     this.zip = zip;
     this.days = days;
-    this.limit = limit;
     if (this.zip == 'all') {
       this.query = {};
       this.limit = 60;
     } else {
       this.query = {zip_code: this.zip};
-      this.limit = this.days;
+      if (this.days == 'all') {
+        this.limit = 0;
+      } else {
+        this.limit = Number.parseInt(this.days);
+      }
     }
   }
   async items() {
