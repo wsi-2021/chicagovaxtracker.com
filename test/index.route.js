@@ -51,4 +51,10 @@ describe('Web requests on the app', function() {
       });
   });
 
+  it('should return a static JS file', function() {
+    return request(app)
+      .get('/js/main.js')
+      .expect(200);
+  });
+
 });
