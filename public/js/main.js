@@ -7,6 +7,8 @@ table.addEventListener('click', function(e) {
   var th = e.target;
   th.classList.toggle('desc');
   sortTable(table, th.cellIndex, th.className);
+  localStorage.setItem('cellIndex', th.cellIndex);
+  localStorage.setItem('order', th.className);
 });
 
 function sortTable(table, columnIndex, order) {
@@ -53,6 +55,13 @@ days_nav.addEventListener('click', function(e) {
         td[2].dataset.value = d.total_doses_cumulative;
         td[2].innerText = d.total_doses_cumulative;
         tbody.append(tr);
+      }
+
+      if (localStorage.getItem('cellIndex')) {
+        var ci = localStorage.getItem('cellIndex');
+        var order = localStorage.getItem('order');
+        document.querySelectorAll('thead th')[ci].className = order;
+        sortTable(table, ci, order);
       }
 
       if (history.pushState) {
