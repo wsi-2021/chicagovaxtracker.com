@@ -7,6 +7,7 @@
     "dev-start": "DEBUG=chicago-vax-test:* npm start",
     "test": "NODE_ENV=test mocha --exit",
     "lint:node": "npx eslint -c conf.eslint.node.json --ignore-pattern public ./",
+    "lint:browser": "npx eslint -c conf.eslint.browser.json ./public/js",
     "mongo:start": "mongod --config db/mongod.dev.conf"
   },
   "dependencies": {

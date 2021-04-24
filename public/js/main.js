@@ -1,10 +1,11 @@
+'use strict';
 document.querySelector('html').className = 'js';
 
-var table = document.querySelector('table#records');
+const table = document.querySelector('table#records');
 
 table.addEventListener('click', function(e) {
   if (e.target.tagName !== 'TH') return; // leave
-  var th = e.target;
+  const th = e.target;
   th.classList.toggle('desc');
   sortTable(table, th.cellIndex, th.className);
   localStorage.setItem('cellIndex', th.cellIndex);
@@ -12,7 +13,7 @@ table.addEventListener('click', function(e) {
 });
 
 function sortTable(table, columnIndex, order) {
-  var rows = Array.from(table.querySelector('tbody').rows);
+  const rows = Array.from(table.querySelector('tbody').rows);
 
   rows.sort(function(a, b) {
     if (isNaN(a.cells[columnIndex].dataset.value)) {
@@ -29,25 +30,25 @@ function sortTable(table, columnIndex, order) {
   table.querySelector('tbody').append(...rows);
 }
 
-var days_nav = document.querySelector('ul.days');
+const days_nav = document.querySelector('ul.days');
 
 days_nav.addEventListener('click', function(e) {
   if (e.target.tagName !== 'A') return; // leave
   e.preventDefault();
-  var href = e.target.getAttribute('href');
-  var api_endpoint = '/api' + href;
+  const href = e.target.getAttribute('href');
+  const api_endpoint = '/api' + href;
   fetch(api_endpoint)
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
-      var tbody = document.querySelector('table#records tbody');
+      const tbody = document.querySelector('table#records tbody');
       tbody.innerHTML = "";
-      for (d of data) {
-        var tr = document.querySelector('template#tr').content.cloneNode(true);
-        var td = tr.querySelectorAll('td');
-        var dt = new Date(d.date);
-        var pretty_date = `${dt.getMonth() + 1}/${dt.getDate()}/${dt.getFullYear()}`;
+      for (let d of data) {
+        const tr = document.querySelector('template#tr').content.cloneNode(true);
+        const td = tr.querySelectorAll('td');
+        const dt = new Date(d.date);
+        const pretty_date = `${dt.getMonth() + 1}/${dt.getDate()}/${dt.getFullYear()}`;
         td[0].dataset.value = d.date;
         td[0].innerText = pretty_date;
         td[1].dataset.value = d.total_doses_daily;
@@ -58,8 +59,8 @@ days_nav.addEventListener('click', function(e) {
       }
 
       if (localStorage.getItem('cellIndex')) {
-        var ci = localStorage.getItem('cellIndex');
-        var order = localStorage.getItem('order');
+        const ci = localStorage.getItem('cellIndex');
+        const order = localStorage.getItem('order');
         document.querySelectorAll('thead th')[ci].className = order;
         sortTable(table, ci, order);
       }
