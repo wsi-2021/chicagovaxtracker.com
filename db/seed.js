@@ -12,7 +12,7 @@ async function seedDatabase() {
   try {
     await collection.drop();
   } catch(e) {
-    console.error(e.message);
+    // console.error(e.message);
   }
 
   try {
@@ -21,7 +21,7 @@ async function seedDatabase() {
     }
     await collection.createIndex('zip_code');
     const count = await collection.countDocuments({});
-    console.log('Record count:', count);
+    // console.log('Record count:', count);
   } catch(error) {
     console.error(error.message);
   } finally {
@@ -32,6 +32,17 @@ async function seedDatabase() {
   }
 }
 
+async function destroyDatabase() {
+  const connection = await mdb.connect();
+  const db = connection.db(`${process.env.NODE_ENV}--vax-data`);
+  const collection = db.collection('by_zip');
+  // Drop the collection that was created for tests
+  await collection.drop();
+  // Close th connection so Mocha doesn't hang
+  connection.close();
+}
+
 module.exports = {
-  seedDatabase
+  seedDatabase,
+  destroyDatabase
 };
