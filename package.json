@@ -21,7 +21,9 @@
     "pug": "^3.0.2"
   },
   "devDependencies": {
+    "cheerio": "*",
     "eslint": "^7.24.0",
-    "mocha": "^8.3.2"
+    "mocha": "^8.3.2",
+    "supertest": "^6.1.3"
   }
 }
