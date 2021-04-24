@@ -4,6 +4,13 @@ block content
   article
     h2= title
     p Population: #{items[0].population}
+    ul.days
+      li
+        a(href=`/${items[0].zip_code}`) Last 10 Days
+      li
+        a(href=`/${items[0].zip_code}/30`) Last 30 Days
+      li
+        a(href=`/${items[0].zip_code}/all`) All Days
     table#records
       thead
         tr
