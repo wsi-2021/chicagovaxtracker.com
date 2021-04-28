@@ -8,7 +8,7 @@ async function seedDatabase() {
   const connection = await mdb.connect();
   const db = connection.db(`${process.env.NODE_ENV}--vax-data`);
   const collection = db.collection('by_zip');
-  const json = await fs.readFile(path.join(__dirname, `../var/data/fetched.json`));
+  const json = await fs.readFile(path.join(__dirname, `seed.json`));
   const data = JSON.parse(json);
 
   try {
