@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - 15
+branches:
+  only:
+    - main
 services:
   - mongodb
 install: npm install --save-dev
@@ -8,3 +11,13 @@ script:
   - npm test
   - npm run lint:node
   - npm run lint:browser
+after_success:
+  - eval "$(ssh-agent -s)"
+  - chmod 600 .travis/id_rsa
+  - ssh-add .travis/id_rsa
+  - echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+  - cd ~
+  - git clone https://github.com/wsi-2021/chicagovaxtracker.com.git chicagovaxtracker.com
+  - cd chicagovaxtracker.com
+  - git remote add live $DEPLOY_URL
+  - git push live main
